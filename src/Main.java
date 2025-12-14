@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import lib.ScreenManager;
+
 //imports
 
 public class Main {
@@ -18,6 +20,11 @@ public class Main {
 
         screenManager.addScreen("home", homeScreen);
         screenManager.addScreen("modes", modesScreen);
+
+        Blackjack blackjackScreen = new Blackjack(screenManager);
+        Slots slotsScreen = new Slots(screenManager);
+        screenManager.addScreen("blackjack", blackjackScreen);
+        screenManager.addScreen("slots", slotsScreen);
 
         // set the frame content to the screen manager's container
         frame.setContentPane(screenManager.getContentPanel());

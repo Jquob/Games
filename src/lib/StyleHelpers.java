@@ -1,3 +1,5 @@
+package lib;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -17,9 +19,6 @@ public class StyleHelpers {
         return button;
     }
 
-    // Helper for nicely styled text labels. Two overloads:
-    // 1) createStyledLabel(text, font, colorHex) -> centered horizontally
-    // 2) createStyledLabel(text, font, colorHex, horizontalAlignment) -> specify SwingConstants.LEFT/CENTER/RIGHT
     public static JLabel createStyledLabel(String text, Font font, String colorHex) {
         return createStyledLabel(text, font, colorHex, SwingConstants.CENTER);
     }

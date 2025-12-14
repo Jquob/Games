@@ -1,3 +1,5 @@
+package lib;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
@@ -32,4 +34,3 @@ public class ScreenManager {
         return container;
     }
 }
-

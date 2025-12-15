@@ -19,7 +19,7 @@ public class Home extends JPanel {
         JLabel title = StyleHelpers.createStyledLabel("GAMES", Header, Constants.fg);
         title.setBorder(BorderFactory.createEmptyBorder(0, 0, 50, 0)); // extra spacing
 
-        JButton start = StyleHelpers.createStyledButton("START GAME", ButtonFont, Constants.fg, Constants.txt);
+        JButton start = StyleHelpers.createStyledButton("START", ButtonFont, Constants.fg, Constants.txt);
         JButton help = StyleHelpers.createStyledButton("HOW TO PLAY", ButtonFont, Constants.secondary, Constants.txt);
 
         // Navigate to Modes screen when start is clicked

@@ -1,8 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 import lib.ScreenManager;
-
-//imports
+import lib.Pause;
+import games.blackjack.Blackjack;
+import games.slots.Slots;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,8 +24,14 @@ public class Main {
 
         Blackjack blackjackScreen = new Blackjack(screenManager);
         Slots slotsScreen = new Slots(screenManager);
+
+        Pause pauseBlackjackScreen = new Pause(screenManager, "blackjack", blackjackScreen::startGame);
+        Pause pauseSlotsScreen = new Pause(screenManager, "slots", slotsScreen::startGame);
+
         screenManager.addScreen("blackjack", blackjackScreen);
         screenManager.addScreen("slots", slotsScreen);
+        screenManager.addScreen("pause_blackjack", pauseBlackjackScreen);
+        screenManager.addScreen("pause_slots", pauseSlotsScreen);
 
         // set the frame content to the screen manager's container
         frame.setContentPane(screenManager.getContentPanel());

@@ -17,8 +17,5 @@ public class Constants {
 
 
     // Barbeque Chicken Alert!
-    public static int SLOT_1 = 0;
-    public static int SLOT_2 = 1;
-    public static int SLOT_3 = 2;
-    public static int REWARD = 0;
+
 }

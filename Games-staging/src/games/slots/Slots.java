@@ -8,6 +8,11 @@ import java.util.Scanner;
 
 public class Slots extends JPanel {
 
+    private static int SLOT_1 = 0;
+    private static int SLOT_2 = 1;
+    private static int SLOT_3 = 2;
+    private static int REWARD = 0;
+    
     public Slots(ScreenManager screenManager) {
         Font Header = Constants.HEADER_FONT;
         Font ButtonFont = Constants.BUTTON_FONT;
@@ -41,7 +46,6 @@ public class Slots extends JPanel {
         buttonPanel.add(spinButton);
         buttonPanel.add(pauseButton);
 
-        JPanel
 
         gbc.gridy = 1;
         panel.add(buttonPanel, gbc);
@@ -54,17 +58,17 @@ public class Slots extends JPanel {
 
     public class SlotsFunctions {
         public static void Roll() {
-            Constants.SLOT_1 = (int) (Math.random() * 10);
-            Constants.SLOT_2 = (int) (Math.random() * 10);
-            Constants.SLOT_3 = (int) (Math.random() * 10);
+            SLOT_1 = (int) (Math.random() * 10);
+            SLOT_2 = (int) (Math.random() * 10);
+            SLOT_3 = (int) (Math.random() * 10);
         }
 
         public static void Reward() {
-            if (Constants.SLOT_1 == Constants.SLOT_2 || Constants.SLOT_1 == Constants.SLOT_3) {
-                if (Constants.SLOT_1 == Constants.SLOT_2 && Constants.SLOT_2 == Constants.SLOT_3) {
-                    Constants.REWARD = 5;
+            if (SLOT_1 == SLOT_2 || SLOT_1 == SLOT_3) {
+                if (SLOT_1 == SLOT_2 && SLOT_2 == SLOT_3) {
+                    REWARD = 5;
                 } else {
-                    Constants.REWARD = 3;
+                    REWARD = 3;
                 }
             }
         }

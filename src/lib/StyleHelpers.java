@@ -39,4 +39,18 @@ public class StyleHelpers {
         label.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
         return label;
     }
+    public static JTextField createStyledTextField(String text, int columns, Font font, String bgColor, String fgColor) {
+        JTextField textField = new JTextField(text, columns);
+        textField.setFont(font);
+        textField.setBackground(Color.decode(bgColor));
+        textField.setForeground(Color.decode(fgColor));
+        textField.setCaretColor(Color.decode(fgColor)); // Color of the blinking cursor
+        textField.setOpaque(true);
+        textField.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(Color.decode(fgColor), 1), // Border color and thickness
+                BorderFactory.createEmptyBorder(5, 10, 5, 10) // Padding inside the text field
+        ));
+        textField.setHorizontalAlignment(JTextField.CENTER); // Center the text
+        return textField;
+    }
 }

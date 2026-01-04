@@ -6,34 +6,30 @@ import java.awt.event.ActionEvent;
 
 public class Pause extends JPanel {
     public Pause(ScreenManager screenManager, String previousScreen, Runnable restartAction) {
-        Font headerFont = Constants.HEADER_FONT;
-        Font buttonFont = Constants.BUTTON_FONT;
-
-        setLayout(new GridBagLayout());
         setBackground(Color.decode(Constants.bg));
+        setLayout(new GridBagLayout());
 
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
-        contentPanel.setBackground(Color.decode(Constants.bg));
-        contentPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        contentPanel.setOpaque(false);
 
-        JLabel title = StyleHelpers.createStyledLabel("Paused", headerFont, Constants.fg);
+        JLabel title = StyleHelpers.createStyledLabel("Paused", Constants.HEADER_FONT, Constants.fg);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JButton resumeButton = StyleHelpers.createStyledButton("Resume", buttonFont, Constants.fg, Constants.txt);
-        resumeButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        resumeButton.addActionListener((ActionEvent e) -> screenManager.showScreen(previousScreen));
+        // Resume: Just goes back
+        JButton resumeButton = createMenuBtn("Resume", e -> screenManager.showScreen(previousScreen));
 
-        JButton restartButton = StyleHelpers.createStyledButton("Restart", buttonFont, Constants.fg, Constants.txt);
-        restartButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        restartButton.addActionListener((ActionEvent e) -> {
-            restartAction.run();
+        // Restart: Runs the reset logic THEN goes back
+        JButton restartButton = createMenuBtn("Restart", e -> {
+            if (restartAction != null) {
+                restartAction.run();
+            }
             screenManager.showScreen(previousScreen);
         });
 
-        JButton backToModesButton = StyleHelpers.createStyledButton("Back to Modes", buttonFont, Constants.secondary, Constants.txt);
+        JButton backToModesButton = StyleHelpers.createStyledButton("Back to Modes", Constants.BUTTON_FONT, Constants.secondary, Constants.txt);
         backToModesButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        backToModesButton.addActionListener((ActionEvent e) -> screenManager.showScreen("modes"));
+        backToModesButton.addActionListener(e -> screenManager.showScreen("modes"));
 
         contentPanel.add(title);
         contentPanel.add(Box.createRigidArea(new Dimension(0, 50)));
@@ -44,5 +40,12 @@ public class Pause extends JPanel {
         contentPanel.add(backToModesButton);
 
         add(contentPanel);
+    }
+
+    private JButton createMenuBtn(String text, java.awt.event.ActionListener l) {
+        JButton b = StyleHelpers.createStyledButton(text, Constants.BUTTON_FONT, Constants.fg, Constants.txt);
+        b.setAlignmentX(Component.CENTER_ALIGNMENT);
+        b.addActionListener(l);
+        return b;
     }
 }

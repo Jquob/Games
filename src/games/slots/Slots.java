@@ -14,6 +14,9 @@ public class Slots extends JPanel {
     private final JTextField betField;
     private final JPanel reelsPanel;
     private final JLabel[] reelLabels;
+    private final String[] SYMBOLS = {"C", "L", "O", "S", "B", "BAR", "7"};
+    private boolean isSpinning = false;
+    private final java.util.Random random = new java.util.Random();
 
     public Slots(ScreenManager screenManager) {
         this.screenManager = screenManager;
@@ -90,10 +93,6 @@ public class Slots extends JPanel {
 
         add(panel);
     }
-
-    private final String[] SYMBOLS = {"C", "L", "O", "S", "B", "BAR", "7"};
-    private boolean isSpinning = false;
-    private final java.util.Random random = new java.util.Random();
 
     public void startGame() {
         if (isSpinning) return;

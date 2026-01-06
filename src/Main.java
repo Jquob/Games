@@ -5,6 +5,7 @@ import lib.Pause;
 import games.blackjack.Blackjack;
 import games.slots.Slots;
 
+
 public class Main {
     public static void main(String[] args) {
         System.setProperty("awt.useSystemAAFontSettings", "on");
@@ -18,9 +19,11 @@ public class Main {
         ScreenManager screenManager = new ScreenManager();
         Home homeScreen = new Home(screenManager);
         Modes modesScreen = new Modes(screenManager);
+        HowToPlay howToPlayScreen = new HowToPlay(screenManager);
 
         screenManager.addScreen("home", homeScreen);
         screenManager.addScreen("modes", modesScreen);
+        screenManager.addScreen("how_to_play", howToPlayScreen);
 
         Blackjack blackjackScreen = new Blackjack(screenManager);
         Slots slotsScreen = new Slots(screenManager);
